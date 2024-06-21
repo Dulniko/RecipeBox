@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Welcome to RecipeBox!</h1>
+
+    <p>This is the starting page of your RecipeBox application.</p>
+
+    <ul>
+        <li><a href="{{ path('app_category_index') }}">View Categories</a></li>
+        <li><a href="{{ path('app_recipe_index') }}">View Recipes</a></li>
+        <li><a href="{{ path('app_tag_index') }}">View Tags</a></li>
+    </ul>
+{% endblock %}
