@@ -3,41 +3,45 @@
 {% block title %}Recipe index{% endblock %}
 
 {% block body %}
-    <h1>Recipe index</h1>
+    <h1 class="text-2xl font-bold mb-6">Recipe index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Instruction</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for recipe in recipes %}
-            <tr>
-                <td>{{ recipe.id }}</td>
-                <td>{{ recipe.title }}</td>
-                <td>{{ recipe.description }}</td>
-                <td>{{ recipe.instruction }}</td>
-                <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}">show</a>
-                    <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Id</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Title</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Description</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Instruction</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Created_at</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Updated_at</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                {% for recipe in recipes %}
+                    <tr class="border-b">
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.id }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.title }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.description }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.instruction }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">
+                            <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                            <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}" class="text-indigo-600 hover:text-indigo-900 ml-2">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="py-4 px-4 border-b border-gray-200 text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('app_recipe_new') }}">Create new</a>
+    <div class="mt-4">
+        <a href="{{ path('app_recipe_new') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create new</a>
+    </div>
 {% endblock %}
