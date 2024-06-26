@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Recipe;
-use App\Entity\user;
+use App\Entity\Tag;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,9 +20,21 @@ class RecipeType extends AbstractType
             ->add('description')
             ->add('instruction')
             ->add('author', EntityType::class, [
-                'class' => user::class,
+                'class' => User::class,
                 'choice_label' => 'email',
             ])
+            ->add('categories', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true, // set to true if you want checkboxes instead of a multiple select
+            ])
+            // ->add('tags', EntityType::class, [
+            //     'class' => Tag::class,
+            //     'choice_label' => 'name',
+            //     'multiple' => true,
+            //     'expanded' => false, // set to true if you want checkboxes instead of a multiple select
+            // ])
         ;
     }
 
