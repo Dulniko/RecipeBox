@@ -22,6 +22,8 @@ class RecipeType extends AbstractType
             ->add('author', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'email',
+                'placeholder' => '---',
+                'required' => false,
             ])
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
