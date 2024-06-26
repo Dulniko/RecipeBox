@@ -3,37 +3,41 @@
 {% block title %}Tag index{% endblock %}
 
 {% block body %}
-    <h1>Tag index</h1>
+    <h1 class="text-2xl font-bold mb-6">Tag index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tag in tags %}
-            <tr>
-                <td>{{ tag.id }}</td>
-                <td>{{ tag.name }}</td>
-                <td>{{ tag.createdAt ? tag.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ tag.updatedAt ? tag.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_tag_show', {'id': tag.id}) }}">show</a>
-                    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Id</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Name</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Created_at</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Updated_at</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                {% for tag in tags %}
+                    <tr class="border-b">
+                        <td class="py-4 px-4 border-b border-gray-200">{{ tag.id }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ tag.name }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ tag.createdAt ? tag.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">{{ tag.updatedAt ? tag.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="py-4 px-4 border-b border-gray-200">
+                            <a href="{{ path('app_tag_show', {'id': tag.id}) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                            <a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="text-indigo-600 hover:text-indigo-900 ml-2">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="py-4 px-4 border-b border-gray-200 text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('app_tag_new') }}">Create new</a>
+    <div class="mt-4">
+        <a href="{{ path('app_tag_new') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create new</a>
+    </div>
 {% endblock %}
