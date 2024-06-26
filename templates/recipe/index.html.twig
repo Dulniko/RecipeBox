@@ -14,6 +14,7 @@
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Description</th>
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Instruction</th>
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Categories</th>
+                    <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Tags</th>
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Created_at</th>
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Updated_at</th>
                     <th class="py-3 px-4 border-b border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">Actions</th>
@@ -29,6 +30,11 @@
                         <td class="py-4 px-4 border-b border-gray-200">
                             {% for category in recipe.categories %}
                                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ category.name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td class="py-4 px-4 border-b border-gray-200">
+                            {% for tag in recipe.tags %}
+                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ tag.name }}</span>
                             {% endfor %}
                         </td>
                         <td class="py-4 px-4 border-b border-gray-200">{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>

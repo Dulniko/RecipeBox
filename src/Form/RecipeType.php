@@ -27,14 +27,14 @@ class RecipeType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'expanded' => true, // set to true if you want checkboxes instead of a multiple select
+                'expanded' => true,
             ])
-            // ->add('tags', EntityType::class, [
-            //     'class' => Tag::class,
-            //     'choice_label' => 'name',
-            //     'multiple' => true,
-            //     'expanded' => false, // set to true if you want checkboxes instead of a multiple select
-            // ])
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+            ])
         ;
     }
 
